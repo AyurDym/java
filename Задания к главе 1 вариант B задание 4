@@ -1,3 +1,5 @@
+Числа, которые делятся на 5 и на 7.
+
 public class main {
     public static void main(String[] args) {
         System.out.println("Числа, делящиеся на 5 и на 7 (от 1 до 100):");
