@@ -1,0 +1,31 @@
+Как связаны имя Java-файла и классы, которые в этом файле объявляются?
+
+Ответ:
+Имя файла с исходным кодом Java (.java) должно в точности совпадать с именем находящегося в нем public класса (с учетом регистра),
+так как Java использует имя класса для поиска и компиляции. В одном файле может быть только один публичный класс,
+но допускается несколько вспомогательных классов, не являющихся public. 
+
+Тестовые задания к главе 1
+
+Вопрос 1.4.
+Какие слова являются ключевыми словами Java? (выбрать два)
+a) classpath
+b) for
+c) main
+d) out
+e) void
+
+Ответ: b и e 
+
+Ключевые и зарезервированные(*) слова языка Java:
+abstract default if protected throw
+assert do implements public throws
+boolean double import record transient
+break else instanceof return try
+byte enum int short var*
+case extends interface static void
+catch final long strictfp volatile
+char finally native super while
+class float new switch yield
+const* for package synchronized
+сontinue goto* private this
