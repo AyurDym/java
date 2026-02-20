@@ -1,1 +1,56 @@
+//4) Найти число, в котором число различных цифр минимально. Если таких
+//чисел несколько, найти первое из них.
 
+import java.util.Scanner;
+
+public class MinDifferentDigitsSimple {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Сколько чисел? ");
+        int n = scanner.nextInt();
+        
+        int[] numbers = new int[n];
+        
+        // Ввод чисел
+        System.out.println("Введите числа:");
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        
+        int bestNumber = numbers[0];
+        int minDigits = 10; // больше максимально возможного
+        
+        for (int i = 0; i < n; i++) {
+            int num = Math.abs(numbers[i]); // игнорируем знак минус
+            
+            // Массив для отметки цифр 0-9
+            boolean[] seen = new boolean[10];
+            int different = 0;
+            
+            // Обработка числа 0
+            if (num == 0) {
+                different = 1;
+            } else {
+                // Считаем различные цифры
+                while (num > 0) {
+                    int digit = num % 10;
+                    if (!seen[digit]) {
+                        seen[digit] = true;
+                        different++;
+                    }
+                    num = num / 10;
+                }
+            }
+            
+            // Сравниваем с лучшим результатом
+            if (different < minDigits) {
+                minDigits = different;
+                bestNumber = numbers[i]; // сохраняем исходное число (со знаком)
+            }
+        }
+        
+        System.out.println("Ответ: " + bestNumber);
+        scanner.close();
+    }
+}
