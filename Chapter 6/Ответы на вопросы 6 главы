@@ -1,1 +1,69 @@
+Вопрос 6.1.
+Дан код:
+interface Readable {
+void read();
+}
+abstract class Editor {
+void edit(){}
+}
+interface Lexicon /* 1 */ /* 2 */ {
+/* 3 */
+}
+Какой набор строк, вставленный соответственно вместо комментариев 1, 2
+и 3, позволит компилироваться интерфейсу Lexicon без ошибок? (выбрать один)
+a) extends; Editor; public void edit(){}
+b) implements; Readable; void read(){}
+c) extends; Editor; protected void edit(){}
+d) implements; Readable; public void read(){}
+ответ: a) extends; Editor; public void edit(){}
 
+Вопрос 6.2.
+Даны объявления интерфейсов и класс, их реализующий:
+interface First {
+int i = 1;
+}
+interface Second {
+int i = 2;
+}
+public class Clazz implements Second, First {
+public static void main(String[] args) {
+System.out.println(i);
+}
+}
+Каким будет результат компиляции и выполнения? (выбрать один)
+a) 1
+b) 2
+c) compilation fails
+d) runtime error
+ответ: c) compilation fails
+
+Вопрос 6.3.
+Даны объявления класса и интерфейса:
+interface Readable{
+void read();
+}
+class Read {
+public void read(){}
+}
+Какие объявления классов и интерфейсов корректны? (выбрать два)
+a) interface Editable extends Readable{}
+b) interface Editable implements Readable{}
+c) class Edit implements Readable extends Read {}
+d) class Edit extends Read implements Readable {}
+e) class Edit implements Readable, Read {}
+f) class Edit extends Readable, Read {}
+ответы: a) interface Editable extends Readable{}, d) class Edit extends Read implements Readable {}
+
+Вопрос 6.4.
+Даны объявления классов и интерфейсов:
+interface First {}
+interface Second extends First {}
+class Klass implements Second{}
+class Clazz implements First {}
+Какие объявления ссылок корректны? (выбрать три)
+a) First a = (First)new Clazz();
+b) Second b = (First)new Klass();
+c) First c = (First)new Klass();
+d) Second d = (Second) new Clazz();
+e) Klass e = (Second)new Clazz();
+ответы: a) First a = (First)new Clazz();, b) Second b = (First)new Klass();, c) First c = (First)new Klass();
