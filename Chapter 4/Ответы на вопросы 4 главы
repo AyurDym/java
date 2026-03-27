@@ -1,1 +1,127 @@
+Вопрос 4.1.
+Объявлены классы X и Y. Заполнить пустое место в методе action() так,
+чтобы был корректно вызван метод из класса X (выбрать один).
+class X {
+void action(){}
+}
+class Y extends X {
+static void action(int i){
+.action();
+}
+}
+a) super
+b) this
+c) X
+d) new X()
+ответ: a) super
 
+Вопрос 4.2.
+Объявлены два класса в иерархии наследования:
+class Base {
+public void method() {
+System.out.println("base");
+}
+}
+class Derived extends Base {
+public static void main(String[] args) {
+Base base = (Base)new Derived();
+base.method();
+}
+public void method() {
+System.out.print(«derived»);
+}
+}
+Что будет выведено в результате компиляции и выполнения кода? (выбрать
+один)
+a) compilation fails
+b) runtime exception
+c) derived
+d) base
+ответ: c) derived
+
+Вопрос 4.3.
+Дан код:
+class A {
+A() {
+System.out.print(0);
+}
+A(int i) {
+System.out.print(i);
+}
+}
+class B extends A {
+B(){super(1);}
+B(int i){}
+public static void main(String args[]) {
+new B();
+new B(2);
+}
+}
+Что будет выведено в результате компиляции и запуска кода? (выбрать один)
+a) compilation fails
+b) runtime exception
+c) 10
+d) 12
+e) 01
+f) 21
+ответ: c) 10
+
+Вопрос 4.4.
+Дан код:
+class SubClass extends Base {
+public static final int NUM = 0;
+}
+class Base {
+public static final int NUM = 1;
+public static void main(String[] args) {
+Base base = new Base();
+SubClass subClass = new SubClass();
+System.out.print(Base.NUM);
+System.out.print(SubClass.NUM);
+System.out.print(base.NUM);
+System.out.print(((Base) subClass).NUM);
+}
+}
+Что выведется на консоль в результате запуска этой программы? (выбрать
+один)
+a) 1000
+b) 1010
+c) 1011
+d) 1111
+e) 1110
+ответ: d) 1111
+
+Вопрос 4.5.
+Дан класс и его подкласс:
+class Base {
+void action() {}
+}
+class Current extends Base {
+// line 1
+}
+Какие из представленных методов могут быть корректно подставлены вместо комментария line 1? (выбрать три)
+a) int action() {}
+b) void action(){}
+c) public void action(){}
+d) private void action(){}
+e) protected void action(){}
+ответы: b) void action(){}, c) public void action(){}, e) protected void action(){}
+
+Вопрос 4.6.
+Дан класс и его подкласс:
+class Base {
+private long idBase;
+public Base(long idBase) {
+this.idBase = idBase;
+}
+}
+class Current extends Base {
+}
+Какие из утверждений истинны? (выбрать один)
+a) код компилируется без изменений
+b) код компилируется, если Current() { Base (); } добавить к классу
+Current
+c) код компилируется, если Base() { Current (); } добавить к классу Base
+d) код компилируется, если Base() {this(1); } добавить к классу Base
+e) код компилируется, если Base() { Base (1); добавить к классу Base
+ответ: d) код компилируется, если Base() {this(1); } добавить к классу Base
