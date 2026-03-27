@@ -1,1 +1,150 @@
+Вопрос 3.1.
+Дано объявление класса: class A{}. Выбрать корректное объявление конструктора (выбрать один).
+a) A() {this.super();}
+b) A() {Object.super();}
+c) A() {A.super();}
+d) A() {}
+Ответ: d) A() {}
+
+Вопрос 3.2.
+Дан код:
+class Base{
+void method(int i) {
+System.out.print(" int ");
+}
+void method(long i) {
+System.out.print(" long ");
+}
+}
+public class Main {
+public static void main(String[] args) {
+Base base = new Base();
+base.method(1L);
+base.method(1_000_000);
+}
+}
+Что будет выведено в результате компиляции и выполнения кода? (выбрать один)
+a) int int
+b) long long
+c) int long
+d) long int
+e) compilation fails
+Ответ: d) long int
+
+Вопрос 3.3.
+Какие из следующих объявлений представляют корректное объявление метода? (выбрать три)
+a) protected abstract void method();
+b) final static void method(){}
+c) public protected void method(){}
+d) default void method();
+e) private final void method(){}
+f) public static method(){}
+Ответ: a, b, e
+
+Вопрос 3.4.
+Какие из следующих объявлений представляют корректное объявление
+класса, объявленного в пакете? (выбрать два)
+a) final abstract class Type {}
+b) public static class Type {}
+c) final public class Type {}
+d) protected abstract class Type {}
+e) class Type {}
+f) abstract default class Type {}
+Ответ: c, e
+
+Вопрос 3.5.
+Дан код:
+class Hope {
+static void action(){
+System.out.print(1);
+}
+}
+class Quest {
+static Hope hope;
+public static void main(String[] args) {
+hope.action();
+}
+}
+Каким будет результат компиляции и запуска приложения? (выбрать один)
+a) compilation fails
+b) NullPointerException при запуске
+c) 1
+d) null
+Ответ: c) 1
+
+Вопрос 3.6.
+Дан код:
+public class A {
+int a;
+A(int a) {
+this.a = a;
+}
+}
+public class Quest {
+public static void main(String[] args) {
+A a1 = new A(0);
+A a2 = new A(0);
+System.out.print(a1 == a2);
+System.out.print(", " + a1.equals(a2));
+System.out.print(", " + (a1.hashCode()==a1.hashCode()));
+}
+}
+Каким будет результат компиляции и запуска приложения? (выбрать один)
+a) false, true, false
+b) false, false, false
+c) false, true, true
+d) false, false, true
+e) true, true, false
+Ответ: d) false, false, true
+
+Вопрос 3.7.
+Дан код:
+class GenericNum<T extends Number> {
+T number;
+GenericNum(T t) {
+number = t;
+}
+T get() {
+return number;
+}
+}
+class GenericsMain {
+public static void main(String[] args) {
+GenericNum<Integer> i1 = new GenericNum<>(500);
+GenericNum<Integer> i2 = new GenericNum<>(500);
+System.out.print(i1.get() == i2.get());
+System.out.print(i1.get().intValue() == i2.get().intValue());
+}
+}
+Каким будет результат компиляции и запуска программы? (выбрать один)
+a) falsefalse
+b) falsetrue
+c) truefalse
+d) truetrue
+Ответ: b) falsetrue
+
+Вопрос 3.8.
+Дан код:
+public class Quest9 {
+enum Numbers {ONE, TWO, THREE, FOUR, FIVE}
+public static void main(String[] args) {
+Numbers n = Numbers.ONE;
+}
+}
+Сколько раз будет вызван конструктор перечисления Numbers?
+a) 0
+b) 1
+c) 5
+Ответ: c) 5
+
+Вопрос 3.9.
+Какие из перечисленных методов класса Object являются final-методами?
+(выбрать четыре)
+a) getClass()
+b) finalize()
+c) notify()
+d) wait()
+e) notifyAll()
+f) clone()
+Ответ: a, c, d, e
 
