@@ -1,1 +1,99 @@
+Вопрос 5.1.
+Дано:
+class Garden {
+public static class Plant {}
+}
+Выбрать корректное объявление объекта внутреннего класса (выбрать
+один).
+a) Plant plant = new Plant();
+b) Garden.Plant plant = new Garden.Plant();
+c) Plant plant = new Garden.Plant();
+d) Garden.Plant plant = new Garden().new Plant();
+ответ: b) Garden.Plant plant = new Garden.Plant();
 
+Вопрос 5.2.
+Дан код:
+class Outer {
+public int size = 0;
+static class Inner {
+public void incrementSize() {
+/* line 1*/ += 1;
+}
+}
+}
+Что необходимо записать вместо комментария line 1, чтобы код класса Inner
+компилировался без ошибок? (выбрать один)
+a) size
+b) Outer.size
+c) new Outer().size
+d) Outer.Inner.size
+e) нет верного варианта
+ответ: c) new Outer().size
+
+Вопрос 5.3.
+Дано:
+class Outer{
+class Inner{}
+public void outerMethod() {
+// место создания объекта класса Inner
+}
+}
+Какой вариант вызовет ошибку компиляции при создании объекта класса
+Inner? (выбрать один)
+a) Inner a = new Inner();
+b) Inner b = Outer.new Inner();
+c) Inner c = new Outer().new Inner();
+d) Outer.Inner d = new Outer().new Inner();
+e) Outer.Inner e = new Inner();
+ответ: b) Inner b = Outer.new Inner();
+
+Вопрос 5.4.
+Дан код:
+class Clazz{
+{System.out.print("clazz ");}
+public void method() {
+System.out.print("method1 ");
+}
+}
+class Owner{
+{System.out.print("owner ");}
+private int N=10;
+class Inner extends Clazz {
+{System.out.print("inner ");}
+public void method(){
+System.out.print("method2 ");
+}
+}
+}
+class Quest {
+public static void main(String[] args) {
+new Owner().new Inner().method();
+}
+}
+Каким будет результат компиляции и запуска приложения? (выбрать один)
+a) compilation fails
+b) clazz owner inner method2
+c) owner clazz inner method2
+d) owner clazz inner method1
+ответ: c) owner clazz inner method2
+
+Вопрос 5.5.
+Дан код:
+class Clazz {
+static int i = 1;
+}
+class Outer {
+class Inner extends Clazz {
+}
+}
+class Quest {
+public static void main(String[] args) {
+System.out.println( );
+}
+}
+Какое обращение к переменной i корректно из метода main? (выбрать один)
+a) Outer.Inner.Clazz.i
+b) new Outer.Inner().i
+c) Outer.Inner.super.i
+d) Outer.Inner.i
+ответ: c) Outer.Inner.super.i
