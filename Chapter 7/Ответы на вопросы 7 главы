@@ -1,1 +1,72 @@
+Вопрос 7.1.
+Дан фрагмент кода:
+long result = Arrays.stream(new String[]{"JSE", "JDK", "J"}) // line 1
+.filter(s -> s.length() > 1)
+.filter(s -> s.contains("J"))
+.count();
+Какое значение примет result? (выбрать один)
+a) 0
+b) 2
+c) 3
+d) compilation fails at line 1
+ответ: b) 2
 
+Вопрос 7.2.
+Дан фрагмент кода:
+Predicate<String> predicate = s -> {
+int i = 0;
+boolean result = s.contains("JDK");
+System.out.print(i++ + " ");
+return result;
+};
+Arrays.stream(new String[]{"JRE", "JDK", "JVM", "JSE", "JDK"}).filter(predicate)
+.findFirst().ifPresent(System.out::print);
+Что будет выведено в консоль?
+a) 0 JDK
+b) 0 0 JDK
+c) 0 1 JDK
+d) 0 0 0 0 0 JDK
+e) 0 1 2 3 4 JDK
+ответ: d) 0 0 0 0 0 JDK
+
+Вопрос 7.3.
+Дан фрагмент кода:
+IntStream numbers = new Random().ints(10, 0, 20);
+System.out.print(
+//line 1
+);
+Какой оператор должен быть вставлен вместо line 1, чтобы был найден максимальный целый элемент потока? (выбрать два)
+a) numbers.max(Integer::max).get()
+b) numbers.max()
+c) numbers.max(Comparator.comparing(n -> n)).get()
+d) numbers.boxed().max(Comparator.comparing(n -> n)).get()
+e) numbers.max(Comparator.comparing(n -> n))
+ответы: c) и d)
+
+Вопрос 7.4.
+Что будет выведено в результате выполнения фрагмента кода? (выбрать один)
+Stream.of(1).peek(((Consumer<Integer>) (i -> i += 1)).andThen(i -> i += 2))
+ .forEach(System.out::print);
+ Stream.of(1).map(((Function<Integer, Integer>) (i -> i += 1)).andThen(i -> i += 2))
+ .forEach(System.out::print);
+a) 14
+b) 11
+c) 12
+d) 24
+e) 22
+ответ: a) 14
+
+Вопрос 7.5.
+Дан фрагмент кода:
+Stream<String> strings = Arrays.stream(
+new String[]{"Java", "Standard", "Edition", "version", "14"});
+System.out.print(
+// line n1
+);
+Какой оператор должен быть вставлен вместо line 1, чтобы было определено
+число строк с длиной меньше чем 4? (выбрать один)
+a) strings.peek(x -> x.length() <= 4).count().get()
+b) strings.filter(x -> x.length() <= 4).count()
+c) strings.filter(x -> x.length() <= 4).mapToInt(Integer::valueOf).count()
+d) strings.map(x -> x.length() <= 4).count()
+ответ: b) strings.filter(x -> x.length() <= 4).count()
