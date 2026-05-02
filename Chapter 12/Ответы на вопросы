@@ -1,1 +1,87 @@
+Вопрос 12.1.
+Дан класс:
+class GoThread implements Runnable {
+public void run() {
+System.out.println("running...");
+}
+}
+Укажите правильные варианты создания объекта потока, который можно запустить вызовом метода start()? (выбрать один)
+a) new Thread().new GoThread();
+b) new Runnable(new GoThread());
+c) new Thread(new GoThread());
+d) new GoThread().
+Ответ: c
 
+Вопрос 12.2.
+Сколько независимых друг от друга потоков будет запущено в цикле? (выбрать один)
+for(int i = 0, j = 10; i <= j; i++, --j) {
+if(i < j - 2) {
+new Thread(new Thread()).start();
+}
+}
+a) 0
+b) 1
+c) 2
+d) 3
+e) 4
+f) 5
+g) compilation fails
+Ответ: e 
+
+Вопрос 12.3.
+Дан код:
+class WaitTMain {
+public static void main(String [] args) {
+System.out.print("0");
+synchronized(args){
+System.out.print("1");
+try {
+args.wait();
+}
+catch(InterruptedException e){}
+}
+System.out.print("2");
+}
+}
+Каким будет результат компиляции и запуска программы? (выбрать один)
+a) 012 и закончит выполнение
+b) 01 и не закончит выполнение
+c) 01 и закончит выполнение
+d) 02 и не закончит выполнение
+e) 02 и закончит выполнение
+f) runtime error: генерация IllegalMonitorStateException при вызове wait()
+Ответ: b
+
+Вопрос 12.4.
+Дан фрагмент кода:
+AtomicInteger i = new AtomicInteger(0);
+Runnable runnable = () -> System.out.print(i.incrementAndGet());
+new Thread(runnable).start();
+new Thread(runnable).start();
+new Thread(runnable).start();
+new Thread(runnable).start();
+Каким будет результат компиляции и запуска кода в методе main()? (выбрать один)
+a) 4444
+b) 0000
+c) 0123 в любой последовательности
+d) 1234 в любой последовательности
+Ответ: d
+
+Вопрос 12.5.
+Дан фрагмент кода:
+Runnable runnable = () -> System.out.print("R");
+Callable<String> callable = () -> "C"; // line 1
+ExecutorService service = Executors.newSingleThreadExecutor();
+service.submit(runnable); // line 2
+Future<String> future = service.submit(callable);
+System.out.println(future.get());
+service.shutdown();
+Каким будет результат компиляции и запуска кода в методе main()? (выбрать один)
+a) RC
+b) CR
+c) R и генерирует исключение
+d) C и генерирует исключение
+e) compilation fails в строке line 1, некорректная реализация интерфейса
+f) compilation fails в строке line 2, запуск runnable невозможен методом
+submit()
+Ответ: a
