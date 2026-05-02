@@ -1,1 +1,62 @@
+Вопрос 10.1.
+Для чего используется метод flush() класса OutputStream? (выбрать один)
+a) очистка выходного буфера с последующим завершением операции вывода данных;
+b) закрытие выходного потока;
+c) установка минимально возможного размера выходного буфера;
+d) вывод выходного буфера.
+Ответ: d
 
+Вопрос 10.2.
+Объектом какого класса является статическое поле out класса System? (выбрать один)
+a) DataOutputStream
+b) OutputStream
+c) BufferedPrintStream
+d) BufferedOutputStream
+e) PrintStream
+Ответ: e
+
+Вопрос 10.3.
+Дан фрагмент кода:
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+System.out.print("Enter number: ");
+// line 1
+Какой из операторов следует вставить вместо line 1, чтобы из консоли было
+прочитано число? (выбрать один)
+a) int number = Integer.valueOf(reader.readLine());
+b) int number = reader.read();
+c) int number = new Scanner(reader.nextInt());
+d) int number = String.parseInt(reader.readLine());
+e) ни один из перечисленных.
+Ответ: a
+
+Вопрос 10.4.
+Дан код:
+class Quest {
+public static void main(String[] args) throws IOException {
+Path source = Paths.get("datares/data/mail.properties");
+Path destination = Paths.get("datares/mail.properties");
+Files.copy(source, destination);
+}
+}
+Каким будет результат запуска кода, если файл mail.properties существует
+в директории datares/data ? (выбрать один)
+a) генерация исключения NoSuchFileException;
+b) генерация исключения FileAlreadyExistsException;
+c) генерация исключения FileNotFoundException;
+d) код выполнится корректно, но никаких изменений произведено не будет;
+e) файл mail.properties будет скопирован в директорию datares.
+Ответ: e
+
+Вопрос 10.5.
+Дан фрагмент кода. Выбрать одно корректное утверждение:
+BufferedWriter b1 = new BufferedWriter(new File("data.txt")); // 1
+BufferedWriter b2 = new BufferedWriter(new FileWriter("data.txt")); // 2
+BufferedWriter b3 = new BufferedWriter(new PrintWriter("data.txt")); // 3
+BufferedWriter b4 = new BufferedWriter(new BufferedWriter(b3)); // 4
+a) все строки скомпилируются корректно;
+b) все строки скомпилируются некорректно;
+c) ошибка компиляции в строке 1;
+d) ошибка компиляции в строке 2;
+e) ошибка компиляции в строке 3;
+f) ошибка компиляции в строке 4.
+Ответ: c
