@@ -1,1 +1,96 @@
+Вопрос 9.1.
+Дан код:
+class Quest {
+static void method() throws ArithmeticException {
+int i = 7 / 0;
+try {
+double d = 77.0;
+d /= 0.0;
+} catch (ArithmeticException e) {
+System.out.print("E1");
+} finally {
+System.out.print("Finally ");
+}
+}
+public static void main(String[] args) {
+try {
+method();
+} catch (ArithmeticException e) {
+System.out.print("E0");
+}
+}
+}
+
+Каким будет результат компиляции и запуска? (выбрать один)
+a) E0Finally
+b) E0E1
+c) E1Finally
+d) E0
+e) FinallyE0
+f) runtime error
+Ответ: d
+
+Вопрос 9.2.
+Дан код:
+class ColorException extends Exception {}
+class WhiteException extends ColorException {}
+abstract class Color {
+abstract void method() throws ColorException;
+}
+class White extends Color {
+void method() throws WhiteException {
+throw new WhiteException();}
+public static void main (String[] args) {
+White white = new White();
+int a, b, c;
+a = b = c = 0;
+try {
+white.method();
+a++;
+} catch (WhiteException e) {
+b++;
+} finally {
+c++;
+}
+System.out.print(a + " " + b + " " + c);
+}}
+Какой результат выведется на консоль при попытке компиляции и запуска
+этого кода? (выбрать один)
+a) 1 1 1
+b) 0 0 1
+c) 0 1 1
+d) 1 0 1
+e) compilation fails
+Ответ: c
+
+Вопрос 9.3.
+Дана иерархия классов:
+class A{
+A() throws IOException{}
+}
+class B extends A {}
+Как следует объявить конструктор класса B, чтобы код компилировался без
+ошибок? (выбрать два)
+a) B() throws IOException{}
+b) B() throws FileNotFoundException{}
+c) B(){}
+d) B() throws IllegalArgumentException{}
+e) B() throws Exception {}
+Ответ: a, b
+
+Вопрос 9.4.
+Дан код:
+class A{
+void f() throws FileNotFoundException {}
+}
+class B extends A{}
+Каким образом можно переопределить метод m() в классе B, не вызвав при
+этом ошибку компиляции? (выбрать три)
+a) void m() throws Exception {}
+b) void m() throws IOException {}
+c) void m(){}
+d) void m() throws FileNotFoundException {}
+e) void m() throws FileNotFoundException, IOException {}
+f) void m() throws ExceptionInInitializerError {}
+Ответ: c, d, f
 
