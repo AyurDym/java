@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Перечисление групп препаратов -->
+    <xs:simpleType name="GroupType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Антибиотики"/>
+            <xs:enumeration value="Болеутоляющие"/>
+            <xs:enumeration value="Витамины"/>
+            <xs:enumeration value="Антигистаминные"/>
+            <xs:enumeration value="Противовирусные"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Перечисление типов упаковки -->
+    <xs:simpleType name="PackageType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Блистер"/>
+            <xs:enumeration value="Банка"/>
+            <xs:enumeration value="Флакон"/>
+            <xs:enumeration value="Ампула"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Перечисление типов версий -->
+    <xs:simpleType name="VersionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Таблетки"/>
+            <xs:enumeration value="Капсулы"/>
+            <xs:enumeration value="Порошок"/>
+            <xs:enumeration value="Капли"/>
+            <xs:enumeration value="Сироп"/>
+            <xs:enumeration value="Мазь"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Шаблон для номера сертификата -->
+    <xs:simpleType name="CertificateNumberType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}-\d{5}-\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Шаблон для даты -->
+    <xs:simpleType name="DateType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}-\d{2}-\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Предельные значения для цены -->
+    <xs:simpleType name="PriceType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="10000"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Предельные значения для количества -->
+    <xs:simpleType name="QuantityType">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Предельные значения для дозировки -->
+    <xs:simpleType name="DosageAmountType">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+            <xs:maxInclusive value="5000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Комплексный тип Certificate -->
+    <xs:complexType name="CertificateType">
+        <xs:sequence>
+            <xs:element name="number" type="CertificateNumberType"/>
+            <xs:element name="issueDate" type="DateType"/>
+            <xs:element name="expiryDate" type="DateType"/>
+            <xs:element name="registrar" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Комплексный тип Package -->
+    <xs:complexType name="PackageTypeComplex">
+        <xs:sequence>
+            <xs:element name="type" type="PackageType"/>
+            <xs:element name="quantity" type="QuantityType"/>
+            <xs:element name="price" type="PriceType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Комплексный тип Dosage -->
+    <xs:complexType name="DosageType">
+        <xs:sequence>
+            <xs:element name="amount" type="DosageAmountType"/>
+            <xs:element name="unit" type="xs:string"/>
+            <xs:element name="frequency" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Комплексный тип Version -->
+    <xs:complexType name="VersionTypeComplex">
+        <xs:sequence>
+            <xs:element name="certificate" type="CertificateType"/>
+            <xs:element name="package" type="PackageTypeComplex"/>
+            <xs:element name="dosage" type="DosageType"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="VersionType" use="required"/>
+    </xs:complexType>
+
+    <!-- Комплексный тип Medicine -->
+    <xs:complexType name="MedicineType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="pharm" type="xs:string"/>
+            <xs:element name="group" type="GroupType"/>
+            <xs:element name="analogs" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="versions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="version" type="VersionTypeComplex" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Корневой элемент -->
+    <xs:element name="medicines">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicine" type="MedicineType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

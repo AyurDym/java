@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="medicines.xsd">
+
+    <medicine id="med001">
+        <name>Амоксициллин</name>
+        <pharm>Фармстандарт</pharm>
+        <group>Антибиотики</group>
+        <analogs>Амоксиклав</analogs>
+        <analogs>Флемоксин</analogs>
+        <versions>
+            <version type="Таблетки">
+                <certificate>
+                    <number>RU-12345-001</number>
+                    <issueDate>2023-01-15</issueDate>
+                    <expiryDate>2028-01-15</expiryDate>
+                    <registrar>Минздрав РФ</registrar>
+                </certificate>
+                <package>
+                    <type>Блистер</type>
+                    <quantity>20</quantity>
+                    <price>250.00</price>
+                </package>
+                <dosage>
+                    <amount>500</amount>
+                    <unit>мг</unit>
+                    <frequency>3 раза в день</frequency>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="med002">
+        <name>Нурофен</name>
+        <pharm>Reckitt Benckiser</pharm>
+        <group>Болеутоляющие</group>
+        <analogs>Ибупрофен</analogs>
+        <versions>
+            <version type="Таблетки">
+                <certificate>
+                    <number>RU-67890-002</number>
+                    <issueDate>2022-06-20</issueDate>
+                    <expiryDate>2027-06-20</expiryDate>
+                    <registrar>Минздрав РФ</registrar>
+                </certificate>
+                <package>
+                    <type>Блистер</type>
+                    <quantity>10</quantity>
+                    <price>180.00</price>
+                </package>
+                <dosage>
+                    <amount>200</amount>
+                    <unit>мг</unit>
+                    <frequency>2-3 раза в день</frequency>
+                </dosage>
+            </version>
+            <version type="Капсулы">
+                <certificate>
+                    <number>RU-67890-003</number>
+                    <issueDate>2022-06-20</issueDate>
+                    <expiryDate>2027-06-20</expiryDate>
+                    <registrar>Минздрав РФ</registrar>
+                </certificate>
+                <package>
+                    <type>Банка</type>
+                    <quantity>20</quantity>
+                    <price>350.00</price>
+                </package>
+                <dosage>
+                    <amount>400</amount>
+                    <unit>мг</unit>
+                    <frequency>2 раза в день</frequency>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="med003">
+        <name>Цитрамон</name>
+        <pharm>Фармстандарт</pharm>
+        <group>Болеутоляющие</group>
+        <analogs>Цитрапар</analogs>
+        <versions>
+            <version type="Таблетки">
+                <certificate>
+                    <number>RU-11122-004</number>
+                    <issueDate>2023-03-10</issueDate>
+                    <expiryDate>2028-03-10</expiryDate>
+                    <registrar>Минздрав РФ</registrar>
+                </certificate>
+                <package>
+                    <type>Блистер</type>
+                    <quantity>10</quantity>
+                    <price>95.00</price>
+                </package>
+                <dosage>
+                    <amount>500</amount>
+                    <unit>мг</unit>
+                    <frequency>1-2 раза в день</frequency>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="med004">
+        <name>Супрастин</name>
+        <pharm>Egis</pharm>
+        <group>Антигистаминные</group>
+        <analogs>Тавегил</analogs>
+        <versions>
+            <version type="Таблетки">
+                <certificate>
+                    <number>HU-55555-005</number>
+                    <issueDate>2022-11-01</issueDate>
+                    <expiryDate>2027-11-01</expiryDate>
+                    <registrar>EMA</registrar>
+                </certificate>
+                <package>
+                    <type>Блистер</type>
+                    <quantity>20</quantity>
+                    <price>320.00</price>
+                </package>
+                <dosage>
+                    <amount>25</amount>
+                    <unit>мг</unit>
+                    <frequency>3-4 раза в день</frequency>
+                </dosage>
+            </version>
+        </versions>
+    </medicine>
+
+</medicines>
